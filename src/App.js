@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { ReactiveBase,DataSearch,ResultCard } from '@appbaseio/reactivesearch';
 import './App.css';
+class App extends Component {
+  render() {
+    return (
+      <ReactiveBase
+        app="rhi"
+        credentials="tDA9DBRL5:c4957533-2659-40df-ad8b-f1ba461a64b7"
+      >
+      <div className="navbar">
+          <div className="logo">
+            My Search Tool
+          </div>
+                    <DataSearch
+                        componentId="mainSearch"
+                        dataField={["part_number", "part_number.search",]}
+                        queryFormat="and"
+                        placeholder="Search here... (I've edited this)"
+                        autosuggest={false}
+                        className="datasearch"
+                        innerClass={{
+                          "input": "searchbox",
+                          "list": "suggestionlist"
+                        }}
+                      />
+      </div>
+      <div className={"display"}>
+          <div className={"leftSidebar"}>
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          </div>
+      </div>
+
+      </ReactiveBase>
+    );
+  }
 }
-
 export default App;
